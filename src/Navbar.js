@@ -1,4 +1,5 @@
 import { Navbar, Nav } from 'react-bootstrap'
+import './navbar.css'
 
 const navbar = () => {
   return (
@@ -6,15 +7,11 @@ const navbar = () => {
       <Navbar.Brand href="#home">Project It</Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
-        <Nav className="mr-auto">
-          <Nav.Link href="#features">Features</Nav.Link>
-          <Nav.Link href="#pricing">Pricing</Nav.Link>
-        </Nav>
-        <Nav>
-          <Nav.Link href="#deets">More deets</Nav.Link>
-          <Nav.Link eventKey={2} href="#memes">
-            Dank memes
-      </Nav.Link>
+        <Nav className="login-signup">
+          <Nav.Link href="#deets"><i class="fas fa-user-lock"></i> &nbsp; Login</Nav.Link>
+          &nbsp;
+          &nbsp;
+          <Nav.Link href="#memes"><i class="fas fa-user-plus"></i> &nbsp; Signup</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
