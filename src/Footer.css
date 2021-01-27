@@ -10,12 +10,13 @@
       display: flex;
       flex-direction: column;
       text-align: center;
-      height: 10vh;
+      height: 15%;
       margin: 0;
 }
 
 .container {
       height: 100%;
+      
 }
 
 .row {
@@ -24,6 +25,7 @@
 
 .lower-footer {
       padding: 0px;
+      background-color: black;
 }
 
 .row, .col, .col-sm, h6, .container {
