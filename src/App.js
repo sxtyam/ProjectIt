@@ -13,6 +13,7 @@ function App() {
       <div className="card-showCase">
         <Card title = "Machine Learning" img = "machineLearning" />
       </div>
+      <Footer />
     </div>
   );
 }
