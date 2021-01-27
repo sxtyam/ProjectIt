@@ -5,12 +5,12 @@ const Footer = () => {
   return (
       <div className = "main-footer">
             <div className = "container">
-                  <div className = "row">
+                  <div className = "row" style={{paddingTop:"8px"}}>
                               <p className="col-sm">
                               Created By:
                               </p>
                   </div>
-                  <div className= "row">
+                  <div className= "row middle-footer">
                         <div className = "col">
                               <h5>
                               <i class="fab fa-linkedin-in"></i>
@@ -33,8 +33,7 @@ const Footer = () => {
                         </div>
 
                   </div>
-                  <hr />
-                  <div className = "row">
+                  <div className = "row lower-footer">
                         <p className="col-sm">
                             <h6>With <i class="fas fa-heart"></i> and <i class="fas fa-mug-hot"></i>.</h6>
                         </p>
