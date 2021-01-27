@@ -2,8 +2,8 @@ import { Navbar, Nav } from 'react-bootstrap'
 
 const navbar = () => {
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-      <Navbar.Brand href="#home">Project It</Navbar.Brand>
+    <Navbar style={{backgroundColor: "black"}} collapseOnSelect expand="lg" variant="dark">
+      <Navbar.Brand href="#home">ProjectIt</Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
