@@ -35,7 +35,8 @@ const Footer = () => {
                   </div>
                   <div className = "row lower-footer">
                         <p className="col-sm">
-                            <h6>With <i class="fas fa-heart"></i> and <i class="fas fa-mug-hot"></i>.</h6>
+                            {/* <h6>With <i class="fas fa-heart"></i> and <i class="fas fa-mug-hot"></i>.</h6> */}
+                            <h6>With ❤️ and ☕</h6>
                         </p>
                   </div>
             </div>    
