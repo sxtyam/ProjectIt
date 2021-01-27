@@ -11,10 +11,8 @@ const navbar = () => {
           <Nav.Link href="#pricing">Pricing</Nav.Link>
         </Nav>
         <Nav>
-          <Nav.Link href="#deets">More deets</Nav.Link>
-          <Nav.Link eventKey={2} href="#memes">
-            Dank memes
-      </Nav.Link>
+          <Nav.Link href="#deets">Login</Nav.Link>
+          <Nav.Link href="#deets">SignUp</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
