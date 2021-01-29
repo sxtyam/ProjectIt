@@ -8,7 +8,7 @@ const navbar = () => {
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="login-signup">
-          <Nav.Link href="#deets"><i class="fas fa-user-lock"></i> &nbsp; Login</Nav.Link>
+          <Nav.Link href='/login'><i class="fas fa-user-lock"></i> &nbsp; Login</Nav.Link>
           &nbsp;
           &nbsp;
           <Nav.Link href="#memes"><i class="fas fa-user-plus"></i> &nbsp; Signup</Nav.Link>

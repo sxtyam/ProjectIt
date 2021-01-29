@@ -1,10 +1,10 @@
 import React from "react";
 
-import "./App.css";
-import Navbar from "./Navbar";
+import "./Home.css";
+import Navbar from "./Common/Navbar";
 import ml from './images/machineLearning.jpg';
 import python from './images/python.jpg';
-import Footer from './Footer';
+import Footer from './Common/Footer';
 import Card from "./card";
 
 function App() {
