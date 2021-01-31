@@ -22,12 +22,21 @@ class loginForm extends Component {
     console.log("Entered!");
     event.preventDefault();
     await fetch('http://localhost:5000/login?username=' + this.state.username + '&password=' + this.state.password, {
-      method: 'GET',
+      method: 'POST',
       mode: 'cors',
-    }).then(response => response.json())
-    .then(responseJson => {
-      console.log(responseJson);
-    });
+    }).then(response => {
+      var getUrl = window.location;
+      var baseUrl = getUrl.protocol + "//" + getUrl.host
+      if (response.status == 200){
+        window.location.href = baseUrl + '/'
+      }
+      else{
+        window.location.href = baseUrl + '/login'
+      }
+    })
+    // .then(responseJson => {
+    //   console.log(responseJson);
+    // });
   }
 
   render() {
