@@ -23,11 +23,7 @@ class loginForm extends Component {
     event.preventDefault();
     await fetch('http://localhost:5000/login?username=' + this.state.username + '&password=' + this.state.password, {
       method: 'GET',
-      // crossDomain: true,
       mode: 'cors',
-      // headers: {
-      //   'Access-Control-Allow-Origin': '*'
-      // }
     }).then(response => response.json())
     .then(responseJson => {
       console.log(responseJson);
