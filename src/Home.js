@@ -6,6 +6,7 @@ import ml from './images/machineLearning.jpg';
 import python from './images/python.jpg';
 import Footer from './Common/Footer';
 import Card from "./card";
+import AllProjects from "./Project/AllProjects";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <div className="card-showCase">
         <Card title = "Machine Learning" img = "machineLearning" />
       </div>
+      <AllProjects field="ML" />
       <Footer />
     </div>
   );
