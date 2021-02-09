@@ -1,37 +1,48 @@
 import React from 'react';
 import { Component } from 'react';
-import { Card } from 'react-bootstrap';
+import { useParams, withRouter } from 'react-router-dom';
+import { findByPlaceholderText } from '@testing-library/react';
+import CardProject from './CardProject';
 
-class allProjects extends Component {
+class AllProjects extends Component {
   state = {
     projects: []
   }
-  
-  componentDidMount() {
-    fetch('http://localhost:5000/project/' + this.props.field + '/all', {
+
+  fetchData = async field => {
+    let response = await fetch('http://localhost:5000/project/' + field + '/all', {
       method: 'GET',
       mode: 'cors'
-    })
-    .then(response => response.json())
+    }).then(response => response.json())
     .then((response) => {
       this.setState({
-        projects: response.map(item => ({
-            project: item.project,
-            userName: item.userName,
-            linkedIn: item.linkedIn
-        }))
+        projects: response
       })
       console.log(this.state);
     })
   }
 
+  componentDidMount() {
+    const field = this.props.match.params.field;
+    console.log(field);
+    this.fetchData(field);
+  }
+
   render() {
-    return(
+    // let card = null;
+    // this.state.projects.forEach(item => 
+    //   <CardProject project = {item} />
+    // )
+    return (
       <div>
+        <h1>Hello World!</h1>
+        {this.state.projects.map(item => 
+          <CardProject project = {item} />
+        )}
         <h1>Hello World!</h1>
       </div>
     )
   }
 }
 
-export default allProjects;
+export default withRouter(AllProjects);

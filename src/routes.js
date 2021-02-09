@@ -5,6 +5,7 @@ import LoginForm from './Login/Login';
 import AllProjects from './Project/AllProjects';
 import SignupForm from './Signup/Signup';
 
+
 const routes = () => {
     return (
         <BrowserRouter>
@@ -12,7 +13,7 @@ const routes = () => {
                 <Route path="/" exact component={Home} />
                 <Route path="/login" exact component={LoginForm} />
                 <Route path="/signup" exact component={SignupForm} />
-                <Route path="/project" exact component={AllProjects} />
+                <Route path="/project/:field/all" exact component={AllProjects} />
             </Switch>
         </BrowserRouter>
     )
