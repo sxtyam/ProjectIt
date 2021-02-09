@@ -15,14 +15,11 @@ class signupForm extends Component {
 
   changeFieldsHandler = (name) => (event) => {
     let newState = { ...this.state };
-
     newState[name] = event.target.value;
-
     this.setState(newState)
   }
 
   sendRequestHandler = async (event) => {
-    console.log("Filled!");
     event.preventDefault();
     let url = 'http://localhost:5000/signup?'
     url = url + 'name=' + this.state.name
@@ -30,15 +27,13 @@ class signupForm extends Component {
     url = url + '&email=' + this.state.email
     url = url + '&password=' + this.state.password
     url = url + '&linkedIn=' + this.state.linkedIn
-    url = url + '&codeForces=' + this.state.codeForces
-    url = url + '&gitHub=' + this.state.gitHub
-    console.log(url);
+    url = url + '&codeforces=' + this.state.codeforces
+    url = url + '&github=' + this.state.github
     await fetch(url, {
       method: 'POST',
       mode: 'cors',
     }).then(response => response.json())
       .then(responseJson => {
-        console.log(responseJson);
         var getUrl = window.location;
         var baseUrl = getUrl.protocol + "//" + getUrl.host
         window.location.href = baseUrl + '/login'
@@ -70,11 +65,11 @@ class signupForm extends Component {
         </Form.Group>
         <Form.Group controlId="formBasicCodeforces">
           <Form.Label>CodeForces</Form.Label>
-          <Form.Control onChange={this.changeFieldsHandler("codeForces")} type="text" placeholder="Codeforces Id" />
+          <Form.Control onChange={this.changeFieldsHandler("codeforces")} type="text" placeholder="Codeforces Id" />
         </Form.Group>
         <Form.Group controlId="formBasicGit">
           <Form.Label>GitHub</Form.Label>
-          <Form.Control onChange={this.changeFieldsHandler("gitHub")} type="text" placeholder="GitHub Profile" />
+          <Form.Control onChange={this.changeFieldsHandler("github")} type="text" placeholder="GitHub Profile" />
         </Form.Group>
         <Button onClick={this.sendRequestHandler} variant="primary" type="submit">
           Submit
