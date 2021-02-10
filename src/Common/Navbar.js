@@ -38,10 +38,10 @@ const navbar = () => {
     if(cookie.split('=')[0].trim() === 'sessionCookie') {
       comp = (
         <Nav className="login-signup">
-          <Nav.Link className="navbar-tags" href='/login'><i class="fas fa-user-lock"></i> &nbsp; Add Project</Nav.Link>
+          <Nav.Link className="navbar-tags" href='/project/add'><i class="fas fa-user-lock"></i> &nbsp; Add Project</Nav.Link>
           &nbsp;
           &nbsp;
-          <Nav.Link className="navbar-tags" href="/signup"><i class="fas fa-user-plus"></i> &nbsp; Profile</Nav.Link>
+          <Nav.Link className="navbar-tags" href="/profile"><i class="fas fa-user-plus"></i> &nbsp; Profile</Nav.Link>
           &nbsp;
           &nbsp;
           <Nav.Link className="navbar-tags" onClick={logout}><i class="fas fa-user-plus"></i> &nbsp; Log Out</Nav.Link>
