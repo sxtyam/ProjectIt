@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Container } from "react-bootstrap";
 import axios from "axios";
+import Navbar from '../Common/Navbar';
+import './Login.css';
 
 class loginForm extends Component {
   axiosConfig = {
@@ -10,9 +12,9 @@ class loginForm extends Component {
     event.preventDefault();
     const res = await axios.post(
       "http://localhost:5000/login?username=" +
-        this.state.username +
-        "&password=" +
-        this.state.password,
+      this.state.username +
+      "&password=" +
+      this.state.password,
       this.axiosConfig
     );
     document.cookie = "sessionCookie=" + res.data.cookie;
@@ -32,31 +34,36 @@ class loginForm extends Component {
 
   render() {
     return (
-      <div>
-        <Form action="" method="POST">
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label>Username</Form.Label>
-            <Form.Control
-              onChange={this.changeFieldsHandler("username")}
-              type="username"
-              placeholder="Enter username"
-            />
-          </Form.Group>
+      <div className="form-page">
+        <Navbar />
+        <Container>
+          <div className="form-container">
+            <h2 className="loginHead">Login</h2>
+            <Form action="" method="POST">
+              <Form.Group controlId="formBasicEmail">
+                <Form.Control
+                  onChange={this.changeFieldsHandler("username")}
+                  type="username"
+                  placeholder="Username"
+                />
+              </Form.Group>
 
-          <Form.Group controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              onChange={this.changeFieldsHandler("password")}
-              type="password"
-              placeholder="Password"
-            />
-          </Form.Group>
-          <Button onClick={this.loginUser} variant="primary" type="submit">
-            Submit
-          </Button>
-          <a href="http://localhost:5000/check">Check</a>
-          <a href="http://localhost:5000/logout">Logout</a>
-        </Form>
+              <Form.Group controlId="formBasicPassword">
+                <Form.Control
+                  onChange={this.changeFieldsHandler("password")}
+                  type="password"
+                  placeholder="Password"
+                />
+              </Form.Group>
+              <Button className="buttonGradient" onClick={this.loginUser} variant="outline-dark" type="submit">
+                Login
+        </Button>
+            </Form>
+            <p>Don't have an account? <a href="/signup">Sign Up</a></p>
+          </div>
+        </Container>
+        <a href="http://localhost:5000/check">Check</a>
+        <a href="http://localhost:5000/logout">Logout</a>
       </div>
     );
   }

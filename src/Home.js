@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <div className="card-showCase">
+      <div style={{backgroundColor: "#dfeae9"}} className="card-showCase">
         <Card title = "Machine Learning" img = "machineLearning" />
       </div>
       <Footer />

@@ -2,3 +2,7 @@
   position: absolute;
   right: 1vw;
 }
+
+.navbar-tags:hover{
+  color: orange;
+}
