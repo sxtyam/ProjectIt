@@ -42,21 +42,26 @@ class signupForm extends Component {
       });
   };
 
+  styling = {
+    border: "0",
+    borderBottom: "2px solid #c4b6b6",
+    borderRadius: "0",
+    width: "670px",
+  }
+
   render() {
     return (
       <div style={{ backgroundColor: "#dfeae9", height: "100vh" }}>
         <Navbar />
         <Container style={{ height: "auto" }}>
-        <div className="signbox">
-          <h2 className="loginHead">Create Account</h2>
+          <div className="signbox">
+            <h2 className="loginHead">Create Account</h2>
             <Form>
               <div className="name-user">
                 <Form.Group controlId="formBasicName">
                   <Form.Control
                     style={{
-                      border: "0",
-                      borderBottom: "2px solid #c4b6b6",
-                      borderRadius: "0",
+                      ...this.styling,
                       width: "300px",
                       marginRight: "70px"
                     }}
@@ -68,10 +73,9 @@ class signupForm extends Component {
                 <Form.Group controlId="formBasicUsername">
                   <Form.Control
                     style={{
-                      border: "0",
-                      borderBottom: "2px solid #c4b6b6",
+                      ...this.styling,
                       borderRadius: "0",
-                      width: "300px",
+                      width: "300px"
                     }}
                     onChange={this.changeFieldsHandler("username")}
                     type="text"
@@ -81,12 +85,7 @@ class signupForm extends Component {
               </div>
               <Form.Group controlId="formBasicEmail">
                 <Form.Control
-                  style={{
-                    border: "0",
-                    borderBottom: "2px solid #c4b6b6",
-                    borderRadius: "0",
-                    width: "670px",
-                  }}
+                  style={this.styling}
                   onChange={this.changeFieldsHandler("email")}
                   type="email"
                   placeholder="Enter email"
@@ -94,12 +93,7 @@ class signupForm extends Component {
               </Form.Group>
               <Form.Group controlId="formBasicPassword">
                 <Form.Control
-                  style={{
-                    border: "0",
-                    borderBottom: "2px solid #c4b6b6",
-                    borderRadius: "0",
-                    width: "670px",
-                  }}
+                  style={this.styling}
                   onChange={this.changeFieldsHandler("password")}
                   type="password"
                   placeholder="Password"
@@ -107,12 +101,7 @@ class signupForm extends Component {
               </Form.Group>
               <Form.Group controlId="formBasicLinked">
                 <Form.Control
-                  style={{
-                    border: "0",
-                    borderBottom: "2px solid #c4b6b6",
-                    borderRadius: "0",
-                    width: "670px",
-                  }}
+                  style={this.styling}
                   onChange={this.changeFieldsHandler("linkedIn")}
                   type="text"
                   placeholder="LinkedIn Profile"
@@ -120,12 +109,7 @@ class signupForm extends Component {
               </Form.Group>
               <Form.Group controlId="formBasicCodeforces">
                 <Form.Control
-                  style={{
-                    border: "0",
-                    borderBottom: "2px solid #c4b6b6",
-                    borderRadius: "0",
-                    width: "670px",
-                  }}
+                  style={this.styling}
                   onChange={this.changeFieldsHandler("codeforces")}
                   type="text"
                   placeholder="Codeforces Id"
@@ -133,12 +117,7 @@ class signupForm extends Component {
               </Form.Group>
               <Form.Group controlId="formBasicGit">
                 <Form.Control
-                  style={{
-                    border: "0",
-                    borderBottom: "2px solid #c4b6b6",
-                    borderRadius: "0",
-                    width: "670px",
-                  }}
+                  style={this.styling}
                   onChange={this.changeFieldsHandler("github")}
                   type="text"
                   placeholder="GitHub Profile"

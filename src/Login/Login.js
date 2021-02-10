@@ -5,21 +5,34 @@ import Navbar from '../Common/Navbar';
 import './Login.css';
 
 class loginForm extends Component {
+
   axiosConfig = {
     withCredentials: true,
   };
   loginUser = async (event) => {
     event.preventDefault();
-    const res = await axios.post(
+    await axios.post(
       "http://localhost:5000/login?username=" +
       this.state.username +
       "&password=" +
       this.state.password,
       this.axiosConfig
-    );
-    document.cookie = "sessionCookie=" + res.data.cookie;
-    console.log(document.cookie);
+    ).then((res) => {
+      var getUrl = window.location;
+      var baseUrl = getUrl.protocol + "//" + getUrl.host;
+      if (res.status === 200) {
+        document.cookie = "sessionCookie=" + res.data.cookie;
+        console.log(document.cookie);
+        window.location.href = baseUrl + "/";
+      }
+      else{
+        window.location.href = baseUrl + "/login";
+      }
+    }
+    )
   };
+
+
 
   state = {
     username: "",
@@ -57,13 +70,11 @@ class loginForm extends Component {
               </Form.Group>
               <Button className="buttonGradient" onClick={this.loginUser} variant="outline-dark" type="submit">
                 Login
-        </Button>
+              </Button>
             </Form>
             <p>Don't have an account? <a href="/signup">Sign Up</a></p>
           </div>
         </Container>
-        <a href="http://localhost:5000/check">Check</a>
-        <a href="http://localhost:5000/logout">Logout</a>
       </div>
     );
   }
