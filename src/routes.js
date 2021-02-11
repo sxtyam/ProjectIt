@@ -6,6 +6,7 @@ import AllProjects from './Project/AllProjects';
 import AddProject from './Project/AddProject';
 import SignupForm from './Signup/Signup';
 import Profile from './Profile/Profile';
+import Project from './Project/Project';
 
 
 const routes = () => {
@@ -19,6 +20,8 @@ const routes = () => {
                 <Route path="/profile" exact component={Profile}/>
                 <Route path="/project/add" exact component={AddProject} />
                 <Route path="/user/:username" exact component={Profile} />
+                <Route path="/project/:projectId" exact component={Project} />
+
             </Switch>
         </BrowserRouter>
     )

@@ -5,7 +5,6 @@
 input:focus{
     outline-width: 0;
 }
-
 .line{
     width: 200px;
     margin-top: 0;
@@ -13,7 +12,6 @@ input:focus{
     border: 0;
     border-top: 2px solid black;
 }
-
 .signbox{
     background-color: white;
     margin: 50px auto;
@@ -28,7 +26,6 @@ input:focus{
     border-radius: 10px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.068)
 }
-
 .name-user{
     display: flex;
     flex-direction: row;

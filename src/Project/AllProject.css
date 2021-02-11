@@ -1,0 +1,23 @@
+.allProjSec{
+    background-color: #dfeae9;
+    height: 100vh;
+}
+
+.projectBox{
+    margin: 30px;
+    border: 2px solid grey;
+    border-radius: 20px;
+    box-shadow: 2px 2px 10px rgb(204, 198, 198);
+}
+
+.view{
+    float: right;
+}
+
+.viewNumber{
+    margin: 5px;
+}
+
+.container{
+    height: auto;
+}

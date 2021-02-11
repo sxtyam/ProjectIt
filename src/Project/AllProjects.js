@@ -3,6 +3,9 @@ import { Component } from 'react';
 import { useParams, withRouter } from 'react-router-dom';
 import { findByPlaceholderText } from '@testing-library/react';
 import CardProject from './CardProject';
+import './AllProject.css';
+import Navbar from '../Common/Navbar';
+import { Container } from 'react-bootstrap';
 
 class AllProjects extends Component {
   state = {
@@ -14,12 +17,12 @@ class AllProjects extends Component {
       method: 'GET',
       mode: 'cors'
     }).then(response => response.json())
-    .then((response) => {
-      this.setState({
-        projects: response
+      .then((response) => {
+        this.setState({
+          projects: response
+        })
+        console.log(this.state);
       })
-      console.log(this.state);
-    })
   }
 
   componentDidMount() {
@@ -29,17 +32,14 @@ class AllProjects extends Component {
   }
 
   render() {
-    // let card = null;
-    // this.state.projects.forEach(item => 
-    //   <CardProject project = {item} />
-    // )
     return (
-      <div>
-        <h1>Hello World!</h1>
-        {this.state.projects.map(item => 
-          <CardProject project = {item} />
-        )}
-        <h1>Hello World!</h1>
+      <div className="allProjSec">
+        <Navbar />
+        <Container className="container">
+          {this.state.projects.map(item =>
+            <CardProject project={item} />
+          )}
+        </Container>
       </div>
     )
   }

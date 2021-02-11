@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans&family=Noto+Serif:ital,wght@0,400;1,700&display=swap');
+
+.projTitle{
+    font-family: 'Noto Serif', serif;
+}
+
+.projBlog{
+    background-color: #dfeae9;
+    color: black;
+    height: 100vh;
+    text-align: justify;
+}
+
+.projBox{
+    padding-top: 60px;
+}
+
+.projDesc{
+    margin-top: 40px;
+    font-size: 20px;
+    /* font-family: 'Alegreya Sans', sans-serif; */
+}
+
+.techS{
+    margin-top: 30px;
+}
+
+.dif{
+    float: right;
+    font-size: 18px;
+}
+
+.techStack{
+    font-size: 20px;
+    /* font-family: 'Alegreya Sans', sans-serif; */
+
+}
