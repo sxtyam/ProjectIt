@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import './Profile.css';
 import Navbar from "../Common/Navbar";
 import { Container } from "react-bootstrap";
-import image from "../user.png"
+import image from "../user.png";
 
 class Profile extends Component {
   render() {
