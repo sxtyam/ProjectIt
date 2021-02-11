@@ -7,9 +7,9 @@ import { Link } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
+    <div style={{ backgroundColor: "#dfeae9", height: "100vh" }} className="App">
       <Navbar />
-      <div style={{ backgroundColor: "#dfeae9" }} className="card-showCase">
+      <div className="card-showCase">
         <Link style={{ textDecoration: "none" }} to="/project/ml/all">
           <Card title="Machine Learning" img="ml" />
         </Link>

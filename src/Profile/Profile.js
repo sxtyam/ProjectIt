@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import "./Profile.css";
 import axios from "axios";
 import Navbar from "../Common/Navbar";
-import { useParams, withRouter } from 'react-router-dom';
+import { useParams, withRouter } from "react-router-dom";
 import { Container } from "react-bootstrap";
+import CardProject from "../Project/CardProject";
 import image from "../user.png";
 
 class Profile extends Component {
@@ -12,16 +13,14 @@ class Profile extends Component {
   fetchData = async () => {
     const username = this.props.match.params.username;
     let url = "http://localhost:5000/user?c=" + document.cookie;
-    if(username) url = "http://localhost:5000/user/" + username;
-    await axios
-      .get(url)
-      .then((res) => {
-        this.setState({
-          userDetails: res.data.userDetails,
-          projects: res.data.projects,
-        });
-        console.log(this.state);
+    if (username) url = "http://localhost:5000/user/" + username;
+    await axios.get(url).then((res) => {
+      this.setState({
+        userDetails: res.data.userDetails,
+        projects: res.data.projects,
       });
+      console.log(this.state);
+    });
   };
 
   componentDidMount() {
@@ -61,10 +60,19 @@ class Profile extends Component {
             <div className="hello">
               {userContent}
               {linkedIn}
-              &nbsp;
-              &nbsp;
+              &nbsp; &nbsp;
               {github}
             </div>
+          </div>
+        </Container>
+        <Container className="projects-container">
+          <div>
+            <h2 style={{ textAlign: "center" }}>Projects</h2>
+          </div>
+          <div>
+            {this.state.projects && this.state.projects.map((item) => (
+              <CardProject project={item} />
+            ))}
           </div>
         </Container>
       </div>
