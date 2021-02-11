@@ -10,8 +10,8 @@ class signupForm extends Component {
     email: "",
     password: "",
     linkedIn: "",
-    codeForces: "",
-    gitHub: "",
+    codeforces: "",
+    github: "",
   };
 
   changeFieldsHandler = (name) => (event) => {

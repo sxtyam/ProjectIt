@@ -18,7 +18,7 @@ const routes = () => {
                 <Route path="/project/:field/all" exact component={AllProjects} />
                 <Route path="/profile" exact component={Profile}/>
                 <Route path="/project/add" exact component={AddProject} />
-
+                <Route path="/user/:username" exact component={Profile} />
             </Switch>
         </BrowserRouter>
     )
