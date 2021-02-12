@@ -3,7 +3,7 @@ import axios from 'axios'
 import { Navbar, Nav } from 'react-bootstrap'
 import './navbar.css'
 
-const navbar = () => {
+const navbar = (props) => {
 
   const axiosConfig = {
     withCredentials: true,
@@ -14,12 +14,13 @@ const navbar = () => {
     ).then((res) => {
       console.log(document.cookie);
       document.cookie = "sessionCookie=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+      console.log(document.cookie);
       var getUrl = window.location;
       var baseUrl = getUrl.protocol + "//" + getUrl.host;
       if(res.status === 200){
         console.log("uehfuheuhfu")
-        window.location.reload();
-        // window.location.href = baseUrl + "/";
+        // window.location.reload();
+        window.location.href = baseUrl + "/";
       }
     })
   }
@@ -44,7 +45,7 @@ const navbar = () => {
           <Nav.Link className="navbar-tags" href="/profile"><i class="fas fa-user-circle"></i>&nbsp; Profile</Nav.Link>
           &nbsp;
           &nbsp;
-          <Nav.Link className="navbar-tags" onClick={logout}><i class="fas fa-sign-out-alt"></i>&nbsp; Log Out</Nav.Link>
+          {props.logout && <Nav.Link className="navbar-tags" onClick={logout}><i class="fas fa-sign-out-alt"></i>&nbsp; Log Out</Nav.Link>}
         </Nav>
       )
     }

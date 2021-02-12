@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import "./Profile.css";
 import axios from "axios";
 import Navbar from "../Common/Navbar";
-import { useParams, withRouter } from "react-router-dom";
-import { Container } from "react-bootstrap";
+import { useParams, withRouter, Link } from "react-router-dom";
+import { Container, Button, } from "react-bootstrap";
 import CardProject from "../Project/CardProject";
 import image from "../user.png";
 
@@ -28,7 +28,14 @@ class Profile extends Component {
   }
 
   render() {
-    let userContent, linkedIn, github;
+    let userContent, linkedIn, github, proectComponent = (
+      <div style={{textAlign: "center", marginTop:"40px"}}>
+        <h4>No projects yet!</h4>
+        {this.props.match.params.username === undefined &&
+          <Link to="/project/add"><Button variant="outline-dark" className="buttonGradient">Add Project</Button></Link>
+        }
+      </div>
+    )
     if (this.state.userDetails) {
       userContent = (
         <div>
@@ -70,9 +77,9 @@ class Profile extends Component {
             <h2 style={{ textAlign: "center" }}>Projects</h2>
           </div>
           <div>
-            {this.state.projects && this.state.projects.map((item) => (
-              <CardProject project={item} />
-            ))}
+            {(this.state.projects && this.state.projects.length > 0) ? this.state.projects.map((item) => (
+              <CardProject project={item}/>
+            )) : proectComponent}
           </div>
         </Container>
       </div>

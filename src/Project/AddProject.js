@@ -159,7 +159,7 @@ class AddProject extends Component {
                   </option>
                   <option value="ml">Machine Learning</option>
                   <option value="webd">Web Development</option>
-                  <option value="ai">Artificial Intelligence</option>
+                  <option value="appd">App Development</option>
                 </Form.Control>
               </Form.Group>
               <Button

@@ -2,13 +2,13 @@ import React from 'react';
 import { Card } from 'react-bootstrap';
 import ml from './images/machineLearning.jpg';
 import python from './images/python.jpg';
-import ai from './images/ai.jpg';
+import appd from './images/appd.jpg';
 import webd from './images/webd.jpg';
 
 const item = {
   "ml": ml,
   "python": python,
-  "ai": ai,
+  "appd": appd,
   "webd": webd
 }
 
