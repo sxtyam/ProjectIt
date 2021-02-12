@@ -1,8 +1,9 @@
 import React from "react";
 import { Component } from "react";
-import { Container } from "react-bootstrap";
+import { Card, Container } from "react-bootstrap";
+import NavbarCollapse from "react-bootstrap/esm/NavbarCollapse";
 import { Link, useParams, withRouter } from "react-router-dom";
-import './Project.css'
+import "./Project.css";
 
 class Project extends Component {
   state = {
@@ -10,7 +11,7 @@ class Project extends Component {
   };
 
   fetchDetails = async (projectId) => {
-    let response = await fetch("http://localhost:5000/project/" + projectId, {
+    await fetch("http://localhost:5000/project/" + projectId, {
       method: "GET",
       mode: "cors",
     })
@@ -31,24 +32,70 @@ class Project extends Component {
   }
 
   render() {
-
     let userurl = "/user/" + this.state.item.username;
 
     return (
       <div className="projBlog">
         {this.state.item.project && (
-          <Container className="container projBox">
-            <h1 className="projTitle">{this.state.item.project.title}</h1>
-            <span className="dif">{this.state.item.project.difficulty}</span>
-            <Link target="_blank" to={userurl}>
-                <h4 className="projUser">~{this.state.item.username}</h4>
-            </Link>
-            <p className="projDesc">{this.state.item.project.description}</p>
-            <h4 className="techS">Tech Stack</h4>
-            <div className="techStack">
-                {this.state.item.project.techStack}
-            </div>
-            <Link to={this.state.item.project.hosted}><div className="readMore">{this.state.item.project.hosted}</div></Link>
+          <Container className="container">
+            <Card className="projBox">
+              <div className="project-title-div">
+                {/* <div className="">
+                  <i class="fas fa-eye"></i>
+                  <span className="viewNumber">
+                    {this.state.item.project.views}
+                  </span>
+                </div> */}
+                <div>
+                  <h1 className="projTitle">
+                    {this.state.item.project.title}&nbsp;&nbsp;&nbsp;
+                    {this.state.item.project.github && (
+                      <a
+                        target="_blank"
+                        href={this.state.item.project.github}
+                        className="ic1"
+                      >
+                        <i className="fab fa-github"></i>
+                      </a>
+                    )}
+                  </h1>
+                </div>
+              </div>
+              <div id="project-diff">
+                <div className={"dif " + this.state.item.project.difficulty}>
+                  {this.state.item.project.difficulty}
+                </div>
+                <Link
+                  style={{ textDecoration: "none" }}
+                  className="project-link"
+                  target="_blank"
+                  to={userurl}
+                >
+                  <span className="projUser">~{this.state.item.username}</span>
+                </Link>
+              </div>
+              <hr className="custom-hr" />
+              <div>
+                <h4 className="left-border-heaing">Description</h4>
+                <p className="projDesc">
+                  {this.state.item.project.description}
+                </p>
+              </div>
+              <div>
+                <h4 className="left-border-heaing">Tech Stack</h4>
+                <div className="techStack">
+                  {this.state.item.project.techStack}
+                </div>
+              </div>
+              {this.state.item.project.hosted && (
+                <div>
+                  <h4 className="left-border-heaing">View Project</h4>
+                  <a target="_blank" href={this.state.item.project.hosted}>
+                    <div className="readMore">{this.state.item.project.hosted}</div>
+                  </a>
+                </div>
+              )}
+            </Card>
           </Container>
         )}
       </div>
