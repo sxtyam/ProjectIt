@@ -52,7 +52,7 @@ const navbar = () => {
 
   return (
     <Navbar collapseOnSelect expand="lg" style={{backgroundColor: "black"}} variant="dark">
-      <Navbar.Brand className="navbar-tags" href='/'>PROJ3CT IT</Navbar.Brand>
+      <Navbar.Brand className="navbar-tags" href='/'>PROJ<span style={{color: "orange"}}>3</span>CT IT</Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
       {comp}

@@ -51,9 +51,9 @@ class signupForm extends Component {
 
   render() {
     return (
-      <div style={{ backgroundColor: "#dfeae9", height: "100vh" }}>
+      <div style={{ backgroundColor: "#dfeae9", minHeight: "100vh" }}>
         <Navbar />
-        <Container style={{ height: "auto" }}>
+        <Container className="container">
           <div className="signbox">
             <h2 className="loginHead">Create Account</h2>
             <Form>

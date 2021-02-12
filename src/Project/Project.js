@@ -48,6 +48,7 @@ class Project extends Component {
             <div className="techStack">
                 {this.state.item.project.techStack}
             </div>
+            <Link to={this.state.item.project.hosted}><div className="readMore">{this.state.item.project.hosted}</div></Link>
           </Container>
         )}
       </div>

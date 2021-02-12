@@ -49,7 +49,7 @@ class loginForm extends Component {
     return (
       <div className="form-page">
         <Navbar />
-        <Container>
+        <Container className="container">
           <div className="form-container">
             <h2 className="loginHead">Login</h2>
             <Form action="" method="POST">

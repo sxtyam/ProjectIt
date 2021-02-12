@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 function App() {
   return (
-    <div style={{ backgroundColor: "#dfeae9", height: "100vh" }} className="App">
+    <div style={{ backgroundColor: "#dfeae9", minHeight: "100vh" }} className="App">
       <Navbar />
       <div className="card-showCase">
         <Link style={{ textDecoration: "none" }} to="/project/ml/all">

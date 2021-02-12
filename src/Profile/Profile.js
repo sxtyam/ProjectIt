@@ -38,21 +38,21 @@ class Profile extends Component {
       );
       if (this.state.userDetails.linkedIn) {
         linkedIn = (
-          <a href={this.state.userDetails.linkedIn} className="ic1">
+          <a target="_blank" href={this.state.userDetails.linkedIn} className="ic1">
             <i className="fab fa-linkedin"></i>
           </a>
         );
       }
       if (this.state.userDetails && this.state.userDetails.github) {
         github = (
-          <a href={this.state.userDetails.github} className="ic1">
+          <a target="_blank" href={this.state.userDetails.github} className="ic1">
             <i className="fab fa-github"></i>
           </a>
         );
       }
     }
     return (
-      <div>
+      <div className="profileSec">
         <Navbar />
         <Container>
           <div className="identity">

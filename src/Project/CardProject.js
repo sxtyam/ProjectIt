@@ -18,7 +18,7 @@ const cardProject = (props) => {
       <Card.Body>
         <Card.Text>{props.project.description}</Card.Text>
         <Link target="_blank" to={loc}>
-          <Button variant="outline-primary">View</Button>
+          <Button className="buttonGradient" variant="outline-dark">View</Button>
         </Link>
         <div className="view">
           <i class="fas fa-eye"></i>
