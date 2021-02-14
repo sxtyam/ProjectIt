@@ -22,6 +22,7 @@ class AddProject extends Component {
   };
 
   submitHandler = async (event) => {
+    let message = <div></div>;
     event.preventDefault();
     let url = "http://localhost:5000/project/add?c=" + document.cookie;
     console.log(url);
@@ -47,6 +48,7 @@ class AddProject extends Component {
           difficulty: "",
           field: "",
         })
+        message = <h3 className="text-success">Project Added Successfully!</h3>
         window.location.reload();
       });
   };
@@ -59,8 +61,9 @@ class AddProject extends Component {
 
   render() {
     return (
-      <div style={{ backgroundColor: "#dfeae9", minHeight: "100vh" }}>
+      <div className="addprojpage" style={{ backgroundColor: "#dfeae9", minHeight: "100vh" }}>
         <Navbar />
+        <message />
         <Container className="addContainer">
           <div className="addp">
             <h2 className="loginHead">Add your Work</h2>

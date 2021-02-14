@@ -9,13 +9,12 @@
       display: flex;
       flex-direction: column;
       text-align: center;
-      height: 15vh;
       margin: 0;
 }
 
 .container {
       height: 100%;
-      
+      width: 100%; 
 }
 
 .row {
@@ -29,4 +28,10 @@
 
 .row, .col, .col-sm, h6, .container {
       margin-bottom: 0;
+}
+
+.containerFoot{
+      padding-bottom: 0;
+      padding-top: 0;
+      width: 70%;
 }

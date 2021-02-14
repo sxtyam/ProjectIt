@@ -4,7 +4,7 @@ import "./Footer.css";
 const Footer = () => {
   return (
     <div className="main-footer">
-      <div className="container">
+      <div className="containerFoot">
         <div className="row" style={{ paddingTop: "8px" }}>
           <p className="col-sm">Created By:</p>
         </div>
@@ -38,7 +38,6 @@ const Footer = () => {
         </div>
         <div className="row lower-footer">
           <p className="col-sm">
-            {/* <h6>With <i class="fas fa-heart"></i> and <i class="fas fa-mug-hot"></i>.</h6> */}
             <h6>With ❤️ and ☕</h6>
           </p>
         </div>

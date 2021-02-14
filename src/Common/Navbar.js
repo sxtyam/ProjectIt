@@ -18,8 +18,7 @@ const navbar = (props) => {
       var getUrl = window.location;
       var baseUrl = getUrl.protocol + "//" + getUrl.host;
       if(res.status === 200){
-        console.log("uehfuheuhfu")
-        // window.location.reload();
+        console.log("Logout is done!")
         window.location.href = baseUrl + "/";
       }
     })

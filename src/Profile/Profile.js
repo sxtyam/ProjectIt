@@ -5,7 +5,7 @@ import Navbar from "../Common/Navbar";
 import { useParams, withRouter, Link } from "react-router-dom";
 import { Container, Button, } from "react-bootstrap";
 import CardProject from "../Project/CardProject";
-import image from "../user.png";
+import image from ".././images/user.png";
 
 class Profile extends Component {
   state = {};

@@ -1,7 +1,6 @@
 import React from "react";
 import { Component } from "react";
 import { Card, Container } from "react-bootstrap";
-import NavbarCollapse from "react-bootstrap/esm/NavbarCollapse";
 import { Link, useParams, withRouter } from "react-router-dom";
 import "./Project.css";
 
@@ -40,12 +39,6 @@ class Project extends Component {
           <Container className="container">
             <Card className="projBox">
               <div className="project-title-div">
-                {/* <div className="">
-                  <i class="fas fa-eye"></i>
-                  <span className="viewNumber">
-                    {this.state.item.project.views}
-                  </span>
-                </div> */}
                 <div>
                   <h1 className="projTitle">
                     {this.state.item.project.title}&nbsp;&nbsp;&nbsp;
