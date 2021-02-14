@@ -29,15 +29,14 @@ function App() {
         <h1>FAQs</h1>
       </Container>
       <div className="Question">
-        <Accordion defaultActiveKey="0">
+        <Accordion>
           <Card.Header
             style={{
               backgroundColor: "white",
               margin: "auto",
               borderRadius: "10px",
             }}
-            className="dropQues"
-          >
+            className="dropQues">
             <h5>
               <b>
                 Why PROJ<span style={{ color: "orange" }}>3</span>CT IT?
@@ -63,7 +62,7 @@ function App() {
         </Accordion>
       </div>
       <div className="Question">
-        <Accordion defaultActiveKey="0">
+        <Accordion>
           <Card.Header
             style={{
               backgroundColor: "white",
@@ -146,7 +145,7 @@ function App() {
         </Accordion>
       </div>
       <div className="Question">
-        <Accordion defaultActiveKey="0">
+        <Accordion>
           <Card.Header
             style={{
               backgroundColor: "white",
