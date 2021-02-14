@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, Button, Container } from "react-bootstrap";
+import { Form, Button, Container, Alert } from "react-bootstrap";
 import axios from "axios";
 import Navbar from "../Common/Navbar";
 import "./Login.css";
@@ -11,6 +11,7 @@ class loginForm extends Component {
       password: "",
     },
     validated: false,
+    wrongEntries: false,
   };
 
   axiosConfig = {
@@ -42,8 +43,14 @@ class loginForm extends Component {
             console.log(document.cookie);
             window.location.href = baseUrl + "/";
           } else {
+            console.log("wrong entry");
             window.location.href = baseUrl + "/login";
           }
+        })
+        .catch(() => {
+          let newState = { ...this.state };
+          newState.wrongEntries = true;
+          this.setState(newState);
         });
     }
   };
@@ -58,6 +65,11 @@ class loginForm extends Component {
     return (
       <div className="form-page">
         <Navbar />
+        {this.state.wrongEntries && 
+          (<Alert className="loginAlert" variant="danger">
+            Invalid Username and Password
+          </Alert>)
+        }
         <Container className="container">
           <div className="form-container">
             <h2 className="loginHead">Login</h2>

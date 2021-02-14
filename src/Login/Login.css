@@ -31,3 +31,10 @@
     margin: 20px 0px;
     width: 200px;
 }
+
+.loginAlert {
+    width: 30%;
+    margin: 20px auto;
+    font-size: 1.3rem;
+    text-align: center;
+}
