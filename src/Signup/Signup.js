@@ -15,6 +15,7 @@ class signupForm extends Component {
       github: "",
     },
     validated: false,
+    usernameValid: false
   };
 
   changeFieldsHandler = (name) => (event) => {
@@ -22,6 +23,30 @@ class signupForm extends Component {
     newState.userDetails[name] = event.target.value;
     this.setState(newState);
   };
+
+  checkUser = async () => {
+    let userToCheck = this.state.userDetails.username;
+    await fetch("http://localhost:5000/checkUsername?" + userToCheck, {
+      method: "GET",
+      mode: "cors"
+    }).then((response) => response.json())
+    .then((response) => {
+      console.log("Ye hmara type h " + typeof(response.userExist))
+      if(!response.userExist){
+        console.log("User not exist!")
+        let newState = { ...this.state };
+        newState.usernameValid = true;
+        this.setState(newState);
+        console.log(this.state.usernameValid)
+        console.log(typeof(this.state.usernameValid))
+      }
+      else{
+        let newState = { ...this.state };
+        newState.usernameValid = false;
+        this.setState(newState);
+      }
+    })
+  }
 
   sendRequestHandler = async (event) => {
     event.preventDefault();
@@ -91,10 +116,17 @@ class signupForm extends Component {
                       width: "300px",
                     }}
                     onChange={this.changeFieldsHandler("username")}
+                    onBlur={this.checkUser}
                     type="text"
                     placeholder="User Name"
                   />
-                </Form.Group>
+                  {this.state.userDetails.username && this.state.usernameValid && (
+                    <p className="text-success">Valid Username</p>
+                  )}
+                  {this.state.userDetails.username && !this.state.usernameValid && (
+                    <p className="text-danger">Username Already Taken</p>
+                  )}
+                  </Form.Group>
               </div>
               <Form.Group controlId="formBasicEmail">
                 <Form.Control
