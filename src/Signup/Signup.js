@@ -5,31 +5,42 @@ import Navbar from "../Common/Navbar";
 
 class signupForm extends Component {
   state = {
-    name: "",
-    username: "",
-    email: "",
-    password: "",
-    linkedIn: "",
-    codeforces: "",
-    github: "",
+    userDetails: {
+      name: "",
+      username: "",
+      email: "",
+      password: "",
+      linkedIn: "",
+      codeforces: "",
+      github: "",
+    },
+    validated: false,
   };
 
   changeFieldsHandler = (name) => (event) => {
     let newState = { ...this.state };
-    newState[name] = event.target.value;
+    newState.userDetails[name] = event.target.value;
     this.setState(newState);
   };
 
   sendRequestHandler = async (event) => {
     event.preventDefault();
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      return;
+    }
+    let newState = {...this.state};
+    newState.validated = true;
+    this.setState(newState);
     let url = "http://localhost:5000/signup?";
-    url = url + "name=" + this.state.name;
-    url = url + "&username=" + this.state.username;
-    url = url + "&email=" + this.state.email;
-    url = url + "&password=" + this.state.password;
-    url = url + "&linkedIn=" + this.state.linkedIn;
-    url = url + "&codeforces=" + this.state.codeforces;
-    url = url + "&github=" + this.state.github;
+    url = url + "name=" + this.state.userDetails.name;
+    url = url + "&username=" + this.state.userDetails.username;
+    url = url + "&email=" + this.state.userDetails.email;
+    url = url + "&password=" + this.state.userDetails.password;
+    url = url + "&linkedIn=" + this.state.userDetails.linkedIn;
+    url = url + "&codeforces=" + this.state.userDetails.codeforces;
+    url = url + "&github=" + this.state.userDetails.github;
     await fetch(url, {
       method: "POST",
       mode: "cors",
@@ -47,7 +58,7 @@ class signupForm extends Component {
     borderBottom: "2px solid #c4b6b6",
     borderRadius: "0",
     width: "670px",
-  }
+  };
 
   render() {
     return (
@@ -56,14 +67,15 @@ class signupForm extends Component {
         <Container className="container">
           <div className="signbox">
             <h2 className="loginHead">Create Account</h2>
-            <Form>
+            <Form onSubmit={this.sendRequestHandler}>
               <div className="name-user">
                 <Form.Group controlId="formBasicName">
                   <Form.Control
+                    required
                     style={{
                       ...this.styling,
                       width: "300px",
-                      marginRight: "70px"
+                      marginRight: "70px",
                     }}
                     onChange={this.changeFieldsHandler("name")}
                     type="text"
@@ -72,10 +84,11 @@ class signupForm extends Component {
                 </Form.Group>
                 <Form.Group controlId="formBasicUsername">
                   <Form.Control
+                    required
                     style={{
                       ...this.styling,
                       borderRadius: "0",
-                      width: "300px"
+                      width: "300px",
                     }}
                     onChange={this.changeFieldsHandler("username")}
                     type="text"
@@ -85,6 +98,7 @@ class signupForm extends Component {
               </div>
               <Form.Group controlId="formBasicEmail">
                 <Form.Control
+                  required
                   style={this.styling}
                   onChange={this.changeFieldsHandler("email")}
                   type="email"
@@ -93,6 +107,7 @@ class signupForm extends Component {
               </Form.Group>
               <Form.Group controlId="formBasicPassword">
                 <Form.Control
+                  required
                   style={this.styling}
                   onChange={this.changeFieldsHandler("password")}
                   type="password"
@@ -125,14 +140,15 @@ class signupForm extends Component {
               </Form.Group>
               <Button
                 className="buttonGradient"
-                onClick={this.sendRequestHandler}
                 variant="outline-dark"
                 type="submit"
               >
                 Sign Up
-                </Button>
+              </Button>
             </Form>
-            <p>Already have an account? <a href="/login">Login Here</a></p>
+            <p>
+              Already have an account? <a href="/login">Login Here</a>
+            </p>
           </div>
         </Container>
       </div>

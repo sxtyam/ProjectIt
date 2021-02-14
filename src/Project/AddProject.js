@@ -6,24 +6,35 @@ import "./AddProjects.css";
 
 class AddProject extends Component {
   state = {
-    title: "",
-    description: "",
-    techStack: "",
-    github: "",
-    hosted: "",
-    difficulty: "",
-    field: "",
+    formDetails: {
+      title: "",
+      description: "",
+      techStack: "",
+      github: "",
+      hosted: "",
+      difficulty: "",
+      field: "",
+    },
+    validated: false,
   };
 
   changeFieldsHandler = (name) => (event) => {
     let newState = { ...this.state };
-    newState[name] = event.target.value;
+    newState.formDetails[name] = event.target.value;
     this.setState(newState);
   };
 
   submitHandler = async (event) => {
-    let message = <div></div>;
     event.preventDefault();
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      return;
+    }
+    let newState = {...this.state};
+    newState.validated = true;
+    this.setState(newState);
+    let message = <div></div>;
     let url = "http://localhost:5000/project/add?c=" + document.cookie;
     console.log(url);
     console.log(this.state);
@@ -34,21 +45,24 @@ class AddProject extends Component {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(this.state),
+      body: JSON.stringify(this.state.formDetails),
     })
       .then((response) => response.json())
       .then((res) => console.log(res))
       .then(() => {
         this.setState({
-          title: "",
-          description: "",
-          techStack: "",
-          github: "",
-          hosted: "",
-          difficulty: "",
-          field: "",
-        })
-        message = <h3 className="text-success">Project Added Successfully!</h3>
+          formDetails: {
+            title: "",
+            description: "",
+            techStack: "",
+            github: "",
+            hosted: "",
+            difficulty: "",
+            field: "",
+          },
+          validated: false,
+        });
+        message = <h3 className="text-success">Project Added Successfully!</h3>;
         window.location.reload();
       });
   };
@@ -61,15 +75,19 @@ class AddProject extends Component {
 
   render() {
     return (
-      <div className="addprojpage" style={{ backgroundColor: "#dfeae9", minHeight: "100vh" }}>
+      <div
+        className="addprojpage"
+        style={{ backgroundColor: "#dfeae9", minHeight: "100vh" }}
+      >
         <Navbar />
         <message />
         <Container className="addContainer">
           <div className="addp">
             <h2 className="loginHead">Add your Work</h2>
-            <Form>
+            <Form onSubmit={this.submitHandler}>
               <Form.Group controlId="formBasicTitle">
                 <Form.Control
+                  required
                   style={{
                     ...this.styling,
                   }}
@@ -81,6 +99,8 @@ class AddProject extends Component {
               </Form.Group>
               <Form.Group controlId="formBasicDescription">
                 <Form.Control
+                  required
+                  minLength="100"
                   as="textarea"
                   rows={1}
                   style={{
@@ -94,6 +114,7 @@ class AddProject extends Component {
               </Form.Group>
               <Form.Group controlId="formBasicTechStack">
                 <Form.Control
+                  required
                   style={{
                     ...this.styling,
                   }}
@@ -127,11 +148,12 @@ class AddProject extends Component {
               </Form.Group>
               <Form.Group controlId="formBasicDifficulty">
                 <Form.Control
+                  required
                   style={{
                     ...this.styling,
                   }}
-                  name="difficulty" 
-                  type="difficulty" 
+                  name="difficulty"
+                  type="difficulty"
                   onChange={this.changeFieldsHandler("difficulty")}
                   placeholder="Difficulty"
                   as="select"
@@ -147,12 +169,13 @@ class AddProject extends Component {
               </Form.Group>
               <Form.Group controlId="formBasicField">
                 <Form.Control
+                  required
                   style={{
                     ...this.styling,
                   }}
-                  name="field" 
-                  type="field" 
-                  placeholder="Field" 
+                  name="field"
+                  type="field"
+                  placeholder="Field"
                   onChange={this.changeFieldsHandler("field")}
                   as="select"
                   size="sm"
@@ -167,7 +190,6 @@ class AddProject extends Component {
               </Form.Group>
               <Button
                 className="buttonGradient"
-                onClick={this.submitHandler}
                 variant="outline-dark"
                 type="submit"
               >
