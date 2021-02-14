@@ -15,7 +15,8 @@ class signupForm extends Component {
       github: "",
     },
     validated: false,
-    usernameValid: false
+    usernameValid: false,
+    formValid: false
   };
 
   changeFieldsHandler = (name) => (event) => {
@@ -26,21 +27,24 @@ class signupForm extends Component {
 
   checkUser = async () => {
     let userToCheck = this.state.userDetails.username;
-    await fetch("http://localhost:5000/checkUsername?" + userToCheck, {
+    await fetch("http://localhost:5000/checkUsername?username=" + userToCheck, {
       method: "GET",
       mode: "cors"
     }).then((response) => response.json())
     .then((response) => {
+      console.log(response.userExist)
       console.log("Ye hmara type h " + typeof(response.userExist))
-      if(!response.userExist){
+      if(response.userExist == false){
         console.log("User not exist!")
         let newState = { ...this.state };
         newState.usernameValid = true;
+        newState.formValid = true;
         this.setState(newState);
         console.log(this.state.usernameValid)
         console.log(typeof(this.state.usernameValid))
       }
       else{
+        console.log("Ye hmara else h")
         let newState = { ...this.state };
         newState.usernameValid = false;
         this.setState(newState);
@@ -174,6 +178,7 @@ class signupForm extends Component {
                 className="buttonGradient"
                 variant="outline-dark"
                 type="submit"
+                disabled={!this.state.formValid}
               >
                 Sign Up
               </Button>
